@@ -11,7 +11,7 @@ gem 'devise'
 gem 'letter_opener', :group => :development
 gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
 gem 'will_paginate'
-gem 'thin', :group => :development
+gem 'thin'
 
 
 
