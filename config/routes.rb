@@ -1,6 +1,7 @@
 Homeworkio::Application.routes.draw do
   
   resources :submissions
+  match 'incoming' => "incoming#create"
 
   devise_for :users
 
