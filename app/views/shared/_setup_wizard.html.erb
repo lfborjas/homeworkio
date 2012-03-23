@@ -1,3 +1,19 @@
-<p>Welcome <%= current_user.username %>, let's set you up </p>
+<div class="page-header">
+  <h1 id="wizard-header">Welcome<%= current_user.username rescue "" %>, let's set you up </h1>
+  <ul class="breadcrumb">
+    <li class="crumb <%= "active" if active == "sign-up" %>">
+    <span class="badge <%= "badge-success" if active == "sign-up" %>">1</span> 
+    Sign up <span class="divider"><i class="icon-play"></i></span>
+    </li>
+    <li class="crumb <%= "active" if active == "add-students" %>">
+      <span class="badge <%= "badge-success" if active == "add-students" %>">2</span> 
+      Add your students <span class="divider"><i class="icon-play"></i></span>
+    </li>
+    <li class="crumb <%= "active" if active == "first-homework" %>">
+      <span class="badge <%= "badge-success" if active == "first-homework" %>">3</span> 
+      Create your first homework
+    </li>
+  </ul>
+</div>
 
 
