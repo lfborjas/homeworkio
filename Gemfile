@@ -6,22 +6,24 @@ gem 'rails', '3.2.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'anjlab-bootstrap-rails', '>= 2.0', :require => 'bootstrap-rails'
+
 gem 'devise'
 gem 'letter_opener', :group => :development
-gem 'simple_form', :git => "git://github.com/plataformatec/simple_form.git"
+gem 'simple_form' 
 gem 'will_paginate'
 gem 'thin'
 gem 'carrierwave'
 gem 'fog'
 
 
+gem 'rest-client', :group => :test
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'twitter-bootstrap-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
