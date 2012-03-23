@@ -1,0 +1,4 @@
+<% if current_user.lists.default == @list && current_user.default_list_empty? %>
+  <%= render "shared/setup_wizard", :active => "add-students" %>
+<% end %>
+<%= render :partial => 'form' %>

@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1 id="wizard-header">Welcome<%= current_user.username rescue "" %>, let's set you up </h1>
+  <h1 id="wizard-header">Welcome<%= " "+ current_user.alias rescue "" %>, let's set you up </h1>
   <ul class="breadcrumb">
     <li class="crumb <%= "active" if active == "sign-up" %>">
     <span class="badge <%= "badge-success" if active == "sign-up" %>">1</span> 

@@ -1,0 +1,16 @@
+<div class="page-header">
+  <h1><%= @list.name %></h1>
+</div>
+
+<h2>Students</h2>
+<ul>
+  <% @list.students.each do |student| %>
+    <li><%= student.email  %></li>
+  <% end %>
+</ul>
+
+<div class="form-actions">
+  <%= link_to 'Back', root_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_list_path(@list), :class => 'btn' %>
+  <%= link_to 'Delete', list_path(@list), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

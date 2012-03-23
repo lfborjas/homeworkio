@@ -36,7 +36,7 @@
           <div class="container nav-collapse">
             <ul class="nav">
               <% if user_signed_in? %>
-                <li><%= link_to "Lists", "/path1"  %></li>
+                <li><%= link_to "Students", list_path(current_user.lists.default)  %></li>
                 <li><%= link_to "Homeworks", "/path2"  %></li>
               <%end%>
             </ul>

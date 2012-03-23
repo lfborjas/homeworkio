@@ -14,6 +14,7 @@ gem 'will_paginate'
 gem 'thin'
 gem 'carrierwave'
 gem 'fog'
+gem 'cocoon'
 
 
 gem 'rest-client', :group => :test
@@ -47,3 +48,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+group :development, :test do
+  gem 'factory_girl_rails'
+#  gem 'turn', :require => false
+end
