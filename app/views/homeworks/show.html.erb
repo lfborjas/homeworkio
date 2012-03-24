@@ -1,25 +1,23 @@
-<h1>/Homework</h1>
+<div class="page-header">
+  <h1>Submissions for "<%= @homework.title %>", due <%= l @homework.deadline, format: :short  %></h1>
+</div>
 
-<p>
-  <b>List</b><br>
-  <%= @homework.list_id %>
-</p>
-
-<p>
-  <b>Title</b><br>
-  <%= @homework.title %>
-</p>
-
-<p>
-  <b>Message</b><br>
-  <%= @homework.message %>
-</p>
-
-<p>
-  <b>Deadline</b><br>
-  <%= @homework.deadline %>
-</p>
-
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>Received At</th>
+      <th>Attachment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @homework.submissions.each do |submission| %>
+      <li><%= submission.student.email  %></li>
+      <li><%= l submission.created_at, format: :short %></li>
+      <li><%= link_to submission.attachment.identifier ,submission.attachment.url %></li>
+    <% end %>
+  </tbody>
+</table>
 <div class="form-actions">
   <%= link_to 'Back', homeworks_path, :class => 'btn'  %>
   <%= link_to 'Edit', edit_homework_path(@homework), :class => 'btn' %>

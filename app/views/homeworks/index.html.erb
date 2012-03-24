@@ -6,17 +6,21 @@
       <th>Message</th>
       <th>Deadline</th>
       <th>Status</th>
+      <th>Mail to</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @homeworks.each do |homework| %>
       <tr>
-        <td><%= homework.title %></td>
+        <td><%= link_to homework.title, homework_path(homework) %></td>
         <td><%= homework.message %></td>
         <td><%= l homework.deadline, format: :short %></td>
         <td><span class="label label-<%= label_for_status(homework.status)  %>">
             <%= display_for_status homework.status %>
+        </td>
+        <td>
+          <%= mail_to homework.email  %>
         </td>
         <td>
           <%= link_to 'Edit', edit_homework_path(homework), :class => 'btn btn-mini' %>

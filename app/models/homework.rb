@@ -12,4 +12,8 @@ class Homework < ActiveRecord::Base
       :some
     end
   end
+
+  def email
+    "8193977fa86911b60fe2+homework#{self.to_param}@cloudmailin.net"
+  end
 end
