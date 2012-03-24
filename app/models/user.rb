@@ -25,7 +25,10 @@ class User < ActiveRecord::Base
   end
 
   def default_list_empty?
-    puts lists.default.inspect
     lists.default.empty?
+  end
+
+  def no_homeworks?
+    lists.default.homeworks.empty?
   end
 end
