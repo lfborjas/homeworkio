@@ -2,26 +2,48 @@
   <h1>Submissions for "<%= @homework.title %>", due <%= l @homework.deadline, format: :short  %></h1>
 </div>
 
-<table class="table table-striped">
+<table class="table ">
   <thead>
     <tr>
       <th>From</th>
       <th>Received At</th>
       <th>Attachment</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
-    <% @homework.submissions.each do |submission| %>
-      <tr>
-        <td><%= submission.student.email  %></td>
-        <td><%= l submission.created_at, format: :short %></td>
-        <td><%= link_to "download", submission.attachment.url %></td>
-        <td>
-          <span class="label label-<%= label_for_submission(submission.on_time?)%>">
-            <%= display_for_submission(submission.on_time?) %>
-          </span>
-        </td>
-      </tr>
+    <% @homework.submissions_by_student.each do |student, submissions| %>
+      <%- 
+        ordered = submissions.sort_by(&:created_at).reverse
+        head = ordered.first
+      -%>
+
+      <% ordered.each do |submission| %>
+          <%- is_head = submission == head -%>
+          <tr id="submissions_by_<%= student.id %>" class="<%= "duplicate-submission alert" unless is_head %>">
+
+            <td>
+              <% if is_head %>
+                <%= submission.student.email %>
+              <%else%>
+                &nbsp;
+              <% end%>
+            </td>
+            <td><%= l submission.created_at, format: :short %></td>
+            <td><%= link_to "download", submission.attachment.url %></td>
+            <td>
+              <span class="label label-<%= label_for_submission(submission.on_time?)%>">
+                <%= display_for_submission(submission.on_time?) %>
+              </span>
+            </td>
+            <td>
+              <% if ordered.size > 1 && is_head %>
+                This entry has more than one submission 
+                <%= link_to "(show)", "#dupes", class: "show-dupes", "data-id" => student.id %>
+              <% end %>
+            </td>
+          </tr>                
+      <% end %>
     <% end %>
   </tbody>
 </table>

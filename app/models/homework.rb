@@ -31,4 +31,8 @@ class Homework < ActiveRecord::Base
   def teacher
     list.user.email
   end
+
+  def submissions_by_student
+    submissions.group_by &:student
+  end
 end
