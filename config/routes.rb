@@ -1,5 +1,7 @@
 Homeworkio::Application.routes.draw do
   
+  resources :homeworks
+
   resources :lists
 
   resources :submissions

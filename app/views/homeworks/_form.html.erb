@@ -1,0 +1,17 @@
+<% if current_user.lists.default.homeworks.empty? %>
+  <%= render "shared/setup_wizard", :active => "first-homework" %>
+<% end %>
+
+<%= simple_form_for @homework, :html => { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+
+    <%= f.input :title %>
+    <%= f.input :message %>
+    <%= f.input :deadline , wrapper_html: {class: "date-inputs"} %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', homeworks_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>

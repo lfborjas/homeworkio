@@ -7,6 +7,7 @@ class List < ActiveRecord::Base
 
   belongs_to :user
   has_many :students
+  has_many :homeworks
   accepts_nested_attributes_for :students, :reject_if => :all_blank, :allow_destroy => true
 
   def empty?

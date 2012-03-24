@@ -1,0 +1,30 @@
+<h1>Homeworks</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Message</th>
+      <th>Deadline</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @homeworks.each do |homework| %>
+      <tr>
+        <td><%= homework.title %></td>
+        <td><%= homework.message %></td>
+        <td><%= l homework.deadline, format: :short %></td>
+        <td><span class="label label-<%= label_for_status(homework.status)  %>">
+            <%= display_for_status homework.status %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_homework_path(homework), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', homework_path(homework), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New', new_homework_path, :class => 'btn btn-primary' %>

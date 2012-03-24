@@ -1,0 +1,27 @@
+<h1>/Homework</h1>
+
+<p>
+  <b>List</b><br>
+  <%= @homework.list_id %>
+</p>
+
+<p>
+  <b>Title</b><br>
+  <%= @homework.title %>
+</p>
+
+<p>
+  <b>Message</b><br>
+  <%= @homework.message %>
+</p>
+
+<p>
+  <b>Deadline</b><br>
+  <%= @homework.deadline %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', homeworks_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_homework_path(@homework), :class => 'btn' %>
+  <%= link_to 'Delete', homework_path(@homework), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

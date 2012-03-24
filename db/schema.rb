@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323221614) do
+ActiveRecord::Schema.define(:version => 20120324000424) do
+
+  create_table "homeworks", :force => true do |t|
+    t.integer  "list_id"
+    t.string   "title"
+    t.text     "message"
+    t.datetime "deadline"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "lists", :force => true do |t|
     t.string   "name"
@@ -32,8 +41,10 @@ ActiveRecord::Schema.define(:version => 20120323221614) do
     t.string   "sender"
     t.text     "message"
     t.string   "attachment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "student_id"
+    t.integer  "homework_id"
   end
 
   create_table "users", :force => true do |t|
