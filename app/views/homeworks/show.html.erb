@@ -12,9 +12,16 @@
   </thead>
   <tbody>
     <% @homework.submissions.each do |submission| %>
-      <li><%= submission.student.email  %></li>
-      <li><%= l submission.created_at, format: :short %></li>
-      <li><%= link_to submission.attachment.identifier ,submission.attachment.url %></li>
+      <tr>
+        <td><%= submission.student.email  %></td>
+        <td><%= l submission.created_at, format: :short %></td>
+        <td><%= link_to "download", submission.attachment.url %></td>
+        <td>
+          <span class="label label-<%= label_for_submission(submission.on_time?)%>">
+            <%= display_for_submission(submission.on_time?) %>
+          </span>
+        </td>
+      </tr>
     <% end %>
   </tbody>
 </table>

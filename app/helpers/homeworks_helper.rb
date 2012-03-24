@@ -14,4 +14,20 @@ module HomeworksHelper
       when :none then "No submissions"
     end
   end
+
+  def label_for_submission(on_time)
+    if on_time
+      'success'
+    else
+      'important'
+    end
+  end
+
+  def display_for_submission(on_time)
+    if on_time
+      "on time"
+    else
+      "overdue"
+    end
+  end
 end

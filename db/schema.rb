@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120324000424) do
+ActiveRecord::Schema.define(:version => 20120324010841) do
 
   create_table "homeworks", :force => true do |t|
     t.integer  "list_id"
@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20120324000424) do
   end
 
   create_table "submissions", :force => true do |t|
-    t.string   "sender"
     t.text     "message"
     t.string   "attachment"
     t.datetime "created_at",  :null => false
