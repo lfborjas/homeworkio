@@ -2,7 +2,7 @@ Homeworkio::Application.routes.draw do
   
   resources :homeworks
 
-  resources :lists
+  resources :lists, :except => [:index, :destroy, :new]
 
   resources :submissions
   match 'incoming' => "incoming#create"
