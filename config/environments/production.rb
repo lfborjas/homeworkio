@@ -71,8 +71,8 @@ Homeworkio::Application.configure do
     :address        => 'smtp.gmail.com',
     :port           => '587',
     :authentication => :login,
-    :user_name      => "notifications@homeworkio.com",
-    :password       => "0de636bc",
+    :user_name      => "submit@homeworkio.com",
+    :password       => "8ac2356f",
     :domain         => 'homeworkio.com',
     :enable_starttls_auto => true
     }
