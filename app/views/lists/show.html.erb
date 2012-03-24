@@ -2,12 +2,26 @@
   <h1><%= @list.name %></h1>
 </div>
 
-<h2>Students</h2>
-<ul>
-  <% @list.students.each do |student| %>
-    <li><%= student.email  %></li>
-  <% end %>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Submissions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @list.students.each do |student| %>
+      <tr>
+        <td><i class="icon-envelope"></i><%= mail_to student.email %></td>
+        <td>
+          <span class="label label-<%= label_for_student(student.unique_submissions.count, @list.homeworks.count) %>">
+            <%= display_for_student(student.unique_submissions.count, @list.homeworks.count) %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <div class="form-actions">
   <%= link_to 'Back', root_path, :class => 'btn'  %>
