@@ -13,6 +13,9 @@
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
+      <% if @in_wizard %>
+        <%= link_to "skip", new_homework_path, :class => 'btn btn-success'%>
+      <%end%>
       <%= link_to 'Cancel', list_path(@list), :class => 'btn' %>
     </div>
   </fieldset>

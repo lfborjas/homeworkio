@@ -36,6 +36,7 @@ class ListsController < ApplicationController
   # GET /lists/1/edit
   def edit
     @list = List.find(params[:id])
+    @in_wizard = current_user.lists.default == @list && current_user.default_list_empty? 
     @list.students.build
   end
 

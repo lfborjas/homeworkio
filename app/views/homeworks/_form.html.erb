@@ -1,12 +1,15 @@
-<% if current_user.lists.default.homeworks.empty? %>
+<% if @in_wizard %>
   <%= render "shared/setup_wizard", :active => "first-homework" %>
 <% end %>
 
 <%= simple_form_for @homework, :html => { :class => 'form-horizontal' } do |f| %>
   <fieldset>
 
+    <% unless @in_wizard %>
+      <legend>Create new homework</legend>
+    <% end %>
     <%= f.input :title %>
-    <%= f.input :message %>
+    <%= f.input :message, input_html: {:size => "40x5"} %>
     <%= f.input :deadline , wrapper_html: {class: "date-inputs"} %>
 
     <div class="form-actions">

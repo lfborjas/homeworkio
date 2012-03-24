@@ -27,6 +27,8 @@ class HomeworksController < ApplicationController
   # GET /homeworks/new.json
   def new
     @homework = Homework.new
+    @homework.deadline = Time.now + 2.hours
+    @in_wizard = current_user.lists.default.homeworks.empty?
 
     respond_to do |format|
       format.html # new.html.erb
