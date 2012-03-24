@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+      <%= @homework.teacher %> just created a homework, and it's due for <%= l @homework.deadline, format: :short  %>
+
+      <p>
+        <strong>Reply to this email to submit your homework!</strong>
+      </p>
+      <p>If you reply to this email, you'll be submitting your response to this homework and your teacher will know, 
+         it's <em>that</em> easy!
+      </p>
+      
+      <% unless @homework.message.blank? %>
+        Also, <%= @homework.teacher%> says that: <%= @homework.message %>
+      <% end %>
+  </body>
+</html>

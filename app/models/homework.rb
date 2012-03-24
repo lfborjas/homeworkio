@@ -2,6 +2,12 @@ class Homework < ActiveRecord::Base
   belongs_to :list
   has_many :submissions
 
+  after_create do |homework|
+    if homework.should_deliver
+      HomeworkMailer.homework_notification(homework).deliver
+    end
+  end
+
   def status
     submission_emails = submissions.map{|s| s.student.email}
     if submissions.empty?
@@ -20,5 +26,9 @@ class Homework < ActiveRecord::Base
   def self.from_address(address)
     id = /\w+\+homework(?<id>\d+)/.match(address).try(:[], :id)
     find_by_id id
+  end
+
+  def teacher
+    list.user.email
   end
 end

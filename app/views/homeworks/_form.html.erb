@@ -11,6 +11,7 @@
     <%= f.input :title %>
     <%= f.input :message, input_html: {:size => "40x5"} %>
     <%= f.input :deadline , wrapper_html: {class: "date-inputs"} %>
+    <%= f.input :should_deliver, hint: "Check if you want your students to be automatically notified of this homework"%>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'btn btn-primary' %>
