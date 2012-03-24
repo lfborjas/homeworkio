@@ -1,0 +1,18 @@
+##Prueba de concepto
+
+* <https://cloudmailin.com/addresses/3069>
+* <http://devcenter.heroku.com/articles/cloudmailin>
+* <https://github.com/jnicklas/carrierwave>
+
+##TODO:
+
+* Decidir lo de los timezones
+* Override or append homework submissions?
+* Debería el maestro recibir una notificación cada vez que se recibe una tarea? (o mejor hacer un cron cada n horas)
+* Permitir markdown en el mensaje de la tarea?
+* Limpiar el código
+
+##DECISIONES:
+
+* ¿Necesitamos un campo `origin` para los estudiantes? (i.e. si lo agregó el maestro o se agregó solo)
+* ¿Ponemos desde el principio la capacidad de tener varias listas?
