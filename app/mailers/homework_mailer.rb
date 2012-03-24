@@ -8,4 +8,10 @@ class HomeworkMailer < ActionMailer::Base
          bcc: homework.list.students.map(&:email),
          subject: homework.title
   end
+
+  def submission_response(submission)
+    @submission = submission
+    mail to: submission.student.email,
+         subject: "Your submission was accepted"
+  end
 end

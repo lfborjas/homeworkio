@@ -2,7 +2,7 @@ require 'rest-client'
 require 'mail'
 
 mail = Mail.new do 
-    from "stu@dent.net"
+    from "new@student.net"
     to "8193977fa86911b60fe2+homework4@cloudmailin.net"
     subject "testing this out"
     body "Oh hai teacher"

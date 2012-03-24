@@ -22,7 +22,10 @@ class IncomingController < ApplicationController
       f.content_type = attachment.mime_type
 
       s.attachment = f
-      s.save
+      if s.save
+        HomeworkMailer.submission_response( s ).deliver
+      end
+
 
       render text: "success", status: 200
     else
