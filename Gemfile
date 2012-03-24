@@ -15,6 +15,7 @@ gem 'thin'
 gem 'carrierwave'
 gem 'fog'
 gem 'cocoon'
+gem 'exception_notification'
 
 
 gem 'rest-client', :group => :test

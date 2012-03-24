@@ -75,4 +75,7 @@ Homeworkio::Application.configure do
     :domain         => 'heroku.com'
     }
     ActionMailer::Base.delivery_method = :smtp
+
+  Homeworkio::Application.config.middleware.use ExceptionNotifier,
+    exception_recipients: %w{ luisfborjas@gmail.com }
 end
