@@ -20,7 +20,7 @@ class Homework < ActiveRecord::Base
   end
 
   def email
-    "8193977fa86911b60fe2+homework#{self.to_param}@cloudmailin.net"
+    "submit+homework#{self.to_param}@homeworkio.com"
   end
 
   def self.from_address(address)

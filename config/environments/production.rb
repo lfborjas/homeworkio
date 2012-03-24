@@ -65,14 +65,16 @@ Homeworkio::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
+  config.action_mailer.default_url_options = { :host => 'homeworkio.com' }
 
     ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
+    :address        => 'smtp.gmail.com',
     :port           => '587',
-    :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com'
+    :authentication => :login,
+    :user_name      => "notifications@homeworkio.com",
+    :password       => "0de636bc",
+    :domain         => 'homeworkio.com',
+    :enable_starttls_auto => true
     }
     ActionMailer::Base.delivery_method = :smtp
 
