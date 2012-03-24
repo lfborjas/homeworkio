@@ -14,4 +14,11 @@ class HomeworkMailer < ActionMailer::Base
     mail to: submission.student.email,
          subject: "Your submission was accepted"
   end
+
+  def submission_failure(submission)
+    @submission = submission
+    mail to: submission.student.email,
+         from: submission.homework.email,
+         subject: "Your submission was rejected"
+  end
 end

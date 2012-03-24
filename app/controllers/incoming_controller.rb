@@ -14,19 +14,23 @@ class IncomingController < ApplicationController
       #found at: 
       #<http://stackoverflow.com/questions/4357893/parsing-an-email-attachment-w-paperclip-possible-w-o-a-tempfile>
       attachment = email.attachments.first
-      f = StringIO.new(attachment.body.decoded)
-      f.class.class_eval do
-        attr_accessor :original_filename, :content_type
+
+      if attachment
+        f = StringIO.new(attachment.body.decoded)
+        f.class.class_eval do
+          attr_accessor :original_filename, :content_type
+        end
+        f.original_filename = attachment.filename
+        f.content_type = attachment.mime_type
+
+        s.attachment = f
+        if s.save
+          HomeworkMailer.submission_response( s ).deliver
+        end
+
+      else
+        HomeworkMailer.submission_failure( s ).deliver
       end
-      f.original_filename = attachment.filename
-      f.content_type = attachment.mime_type
-
-      s.attachment = f
-      if s.save
-        HomeworkMailer.submission_response( s ).deliver
-      end
-
-
       render text: "success", status: 200
     else
       render text: "invalid", status: 404
