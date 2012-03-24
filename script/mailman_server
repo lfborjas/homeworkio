@@ -3,6 +3,14 @@ require "rubygems"
 require "bundler/setup"
 require "mailman"
 
+if Rails.env.production?
+  Mailman.config.pop3 = {
+    server: 'pop.gmail.com', port: 995, ssl: true,
+    username: "submit@homeworkio.com",
+    password: "8ac2356f"
+  }
+end
+
 Mailman::Application.run do
   default do
     email = message
