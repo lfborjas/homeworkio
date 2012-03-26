@@ -8,6 +8,7 @@
 /.bundle
 /public/uploads/*
 *database.yml
+.rvmrc*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
