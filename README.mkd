@@ -3,6 +3,23 @@
 * <https://cloudmailin.com/addresses/3069>
 * <http://devcenter.heroku.com/articles/cloudmailin>
 * <https://github.com/jnicklas/carrierwave>
+* <http://documentation.mailgun.net/user_manual.html#receiving-messages>
+* <http://blog.programmableweb.com/2012/01/31/send-and-receive-with-these-four-email-apis/>
+
+##Para probar recibir correo:
+
+* Poner a correr el server localmente
+* correr `ruby manual_tests/submit_homework.rb`
+* va a hacer un post a `/incoming_mime`, revisar que funcione como debe,
+  XD
+
+##Gastos
+
+* $19 mensuales en linode.com
+* $19 mensuales en mailgun.com
+* $11 anuales por el dominio
+* (ambos hechos por luisfborjas@gmail.com)
+* Probemos este mes y decidamos
 
 ##TODO:
 
