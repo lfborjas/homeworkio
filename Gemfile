@@ -17,7 +17,6 @@ gem 'carrierwave'
 gem 'fog'
 gem 'cocoon'
 gem 'exception_notification'
-gem 'mailman', require: false
 
 
 gem 'rest-client', :group => :test

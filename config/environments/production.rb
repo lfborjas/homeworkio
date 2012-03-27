@@ -68,11 +68,11 @@ Homeworkio::Application.configure do
   config.action_mailer.default_url_options = { :host => 'homeworkio.com' }
 
     ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.gmail.com',
+    :address        => 'smtp.mailgun.org',
     :port           => '587',
-    :authentication => :login,
-    :user_name      => "submit@homeworkio.com",
-    :password       => "8ac2356f",
+    :authentication => :plain,
+    :user_name      => "postmaster@homeworkio.com",
+    :password       => "7zrxpv7syf27",
     :domain         => 'homeworkio.com',
     :enable_starttls_auto => true
     }

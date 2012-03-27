@@ -31,27 +31,6 @@ namespace :deploy do
  end
 end
 
-namespace :mailman do
-  desc "Mailman::Start"
-  task :start, :roles => [:app] do
-    run "cd #{current_path};RAILS_ENV=production bundle exec script/mailman_daemon start"
-  end
-  
-  desc "Mailman::Stop"
-  task :stop, :roles => [:app] do
-    run "cd #{current_path};RAILS_ENV=production bundle exec script/mailman_daemon stop"
-  end
-  
-  desc "Mailman::Restart"
-  task :restart, :roles => [:app] do
-    mailman.stop
-    mailman.start
-  end
-end
-
-before "deploy:restart", "mailman:stop"
-after  "deploy:restart", "mailman:start"
-
 after "deploy:update_code", "deploy:symlink_shared"
 after "deploy:update_code" do
   run "cd #{release_path}; bundle exec rake RAILS_ENV=production assets:precompile"
