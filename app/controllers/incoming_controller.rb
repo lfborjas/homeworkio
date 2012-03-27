@@ -3,7 +3,7 @@ class IncomingController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def create
-    email = Mail.new(params[:message])
+    email = Mail.new(params["body-mime"])
     homework = Homework.from_address(email.to.to_s)
     if homework
       #we have the homework, gotta get the student now

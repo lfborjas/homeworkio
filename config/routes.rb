@@ -5,7 +5,9 @@ Homeworkio::Application.routes.draw do
   resources :lists, :except => [:index, :destroy, :new]
 
   resources :submissions
-  match 'incoming' => "incoming#create"
+  match 'incoming_mime' => "incoming#create"
+  #TODO: use the non-mime version of mailgun for more control:
+  #http://documentation.mailgun.net/user_manual.html#receiving-messages
 
   devise_for :users, controllers: {registrations: "registrations"}
 
