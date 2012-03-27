@@ -5,7 +5,8 @@ gem 'rails', '3.2.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+gem 'pg', :group => :production
+gem 'mysql2', :group => :development
 
 gem 'devise'
 gem 'letter_opener', :group => :development
