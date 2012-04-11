@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :lists
+  has_one :db_session
 
   after_create do |user|
     user.lists.create name: "#{user.alias}'s students", is_default: true

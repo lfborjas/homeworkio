@@ -4,7 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-      <%= @homework.teacher %> just created a homework, and it's due for <%= l @homework.deadline, format: :short  %>
+      <%= @homework.teacher.email %> just created a homework, and it's due for <%= l @homework.deadline, format: :short  %>
 
       <p>
         <strong>Reply to this email to submit your homework!</strong>
@@ -14,7 +14,7 @@
       </p>
       
       <% unless @homework.message.blank? %>
-        Also, <%= @homework.teacher%> says that: <%= @homework.message %>
+        Also, <%= @homework.teacher.email %> says that: <%= @homework.message %>
       <% end %>
   </body>
 </html>
