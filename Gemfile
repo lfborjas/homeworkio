@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+require 'socket'
 
 gem 'rails', '3.2.2'
 
@@ -6,7 +7,10 @@ gem 'rails', '3.2.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg', :group => :production
-gem 'mysql2', :group => :development
+
+if(Socket.gethostname != 'fernando-dell')
+	gem 'mysql2', :group => :development
+end
 
 gem 'devise'
 gem 'letter_opener', :group => :development
@@ -54,3 +58,10 @@ group :development, :test do
   gem 'factory_girl_rails'
 #  gem 'turn', :require => false
 end
+
+group :development do
+	gem 'sqlite3'
+end
+
+#Dropbox integration
+gem 'dropbox-sdk'

@@ -38,6 +38,10 @@
               <% if user_signed_in? %>
                 <li><%= link_to "Students", list_path(current_user.lists.default)  %></li>
                 <li><%= link_to "Homeworks", homeworks_path %></li>
+                
+                <% unless current_user.db_session %>
+                  <li><%= link_to "Sync Dropbox", db_authorize_path, :class=>'dropbox-sync' %></li>
+                <%end%>
               <%end%>
             </ul>
             <ul class="nav pull-right">
@@ -57,7 +61,7 @@
     <div class="container">
 
     <% flash.each do |name, msg| %>
-      <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <div class="alert notice alert-<%= name == :notice ? "success" : "error" %>">
         <a class="close" data-dismiss="alert">×</a>
         <%= msg %>
       </div>
