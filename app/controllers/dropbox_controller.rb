@@ -42,7 +42,7 @@ class DropboxController < ApplicationController
                 user.db_session.save
             end            
 
-            redirect_to root_path
+            redirect_to root_path, notice: "Dropbox synced successfully. All homeworks from now on will be uploaded to the Apps/homeworkio folder"
         end
     end
 
