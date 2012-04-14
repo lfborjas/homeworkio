@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
     user.lists.create name: "#{user.alias}'s students", is_default: true
   end
 
+  def uses_dropbox?
+    db_session.present?
+  end
+
   def alias
     email.gsub(/@.*/, "")
   end

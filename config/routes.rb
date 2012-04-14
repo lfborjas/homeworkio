@@ -6,6 +6,8 @@ Homeworkio::Application.routes.draw do
 
   resources :submissions
   match 'incoming_mime' => "incoming#create"
+  
+  match "/dj" => DelayedJobWeb, :anchor => false
   #TODO: use the non-mime version of mailgun for more control:
   #http://documentation.mailgun.net/user_manual.html#receiving-messages
 

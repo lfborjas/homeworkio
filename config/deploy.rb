@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+require 'delayed/recipes'
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
@@ -13,6 +14,7 @@ set :password, "8ac2356f" #same for postgresroot
 #Server IP: 97.107.142.7
 server "homeworkio.com", :app, :web, :db, :primary => true
 set :branch, "master"
+set :rails_env, "production"
 
 
 # if you're still using the script/reaper helper you will need
@@ -36,3 +38,6 @@ after "deploy:update_code" do
   run "cd #{release_path}; bundle exec rake RAILS_ENV=production assets:precompile"
 end
 
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
