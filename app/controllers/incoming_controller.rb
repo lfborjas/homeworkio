@@ -24,20 +24,8 @@ class IncomingController < ApplicationController
         f.content_type = attachment.mime_type
 
         s.attachment = f
-        if s.save                    
-          begin
-            folder_path = '/'+homework.id.to_s + '_'+homework.title + '/'+s.student.email
-            db_session = homework.teacher.db_session
-            
-            #Create folder
-            db_session.create_folder folder_path
-
-            #Upload to dropbox
-            db_session.upload(folder_path + '/' + attachment.filename, 
-                attachment.body.decoded)
-          rescue
-          end
-
+        if s.save
+          s.delay.upload_to_dropbox( attachment )
           HomeworkMailer.submission_response( s ).deliver
         end
 

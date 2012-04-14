@@ -21,6 +21,9 @@ gem 'carrierwave'
 gem 'fog'
 gem 'cocoon'
 gem 'exception_notification'
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
+gem "daemons"
 
 
 gem 'rest-client', :group => :test
