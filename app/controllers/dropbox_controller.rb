@@ -35,7 +35,6 @@ class DropboxController < ApplicationController
             unless user.db_session
                 db_session = DbSession.new({:user => user, 
                     :session => dbsession.serialize.to_s})
-                puts db_session.session
                 db_session.save
             else
                 user.db_session.session = dbsession.serialize
