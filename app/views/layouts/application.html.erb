@@ -66,13 +66,13 @@
         <%= msg %>
       </div>
     <% end %>
-      <%- show_dropbox_offer = !current_user.try(:uses_dropbox?) %>
+      <%- show_dropbox_offer = user_signed_in && current_user.uses_dropbox? %>
       <div class="content">
         <div class="row">
           <div class="span<%= show_dropbox_offer ? "9" : "12" %> ">
               <%= yield %>
             </div>
-            <%if user_signed_in? && show_dropbox_offer %>
+            <%if show_dropbox_offer %>
             <div class="span3">
               <div class="well sidebar-nav">
                 <h3>Do you have a dropbox account?</h3>
