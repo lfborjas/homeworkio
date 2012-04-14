@@ -9,7 +9,9 @@
 ##Para probar recibir correo:
 
 * Poner a correr el server localmente
-* correr `ruby manual_tests/submit_homework.rb`
+* correr `ruby manual_tests/submit_homework.rb correo@estudiante.edu
+  submit+homeworkXXX@homeworkio.com`; el primer parámetro puede ser
+  cualquier cosa, el segundo es de una tarea que esté en localhost
 * va a hacer un post a `/incoming_mime`, revisar que funcione como debe,
   XD
 
