@@ -72,7 +72,7 @@
           <div class="span<%= show_dropbox_offer ? "9" : "12" %> ">
               <%= yield %>
             </div>
-            <%if show_dropbox_offer %>
+            <%if user_signed_in? && show_dropbox_offer %>
             <div class="span3">
               <div class="well sidebar-nav">
                 <h3>Do you have a dropbox account?</h3>
