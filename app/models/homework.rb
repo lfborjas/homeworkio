@@ -23,13 +23,13 @@ class Homework < ActiveRecord::Base
     "submit+homework#{self.to_param}@homeworkio.com"
   end
 
-  def self.from_address(address)
+  def self.from_address(address)    
     id = /\w+\+homework(?<id>\d+)/.match(address).try(:[], :id)
     find_by_id id
   end
 
   def teacher
-    list.user.email
+    list.user
   end
 
   def submissions_by_student

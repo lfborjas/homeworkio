@@ -3,7 +3,7 @@ class IncomingController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def create
-    email = Mail.new(params["body-mime"])
+    email = Mail.new(params["body-mime"])    
     homework = Homework.from_address(email.to.to_s)
     if homework
       #we have the homework, gotta get the student now
@@ -24,7 +24,20 @@ class IncomingController < ApplicationController
         f.content_type = attachment.mime_type
 
         s.attachment = f
-        if s.save
+        if s.save                    
+          begin
+            folder_path = '/'+homework.id.to_s + '_'+homework.title + '/'+s.student.email
+            db_session = homework.teacher.db_session
+            
+            #Create folder
+            db_session.create_folder folder_path
+
+            #Upload to dropbox
+            db_session.upload(folder_path + '/' + attachment.filename, 
+                attachment.body.decoded)
+          rescue
+          end
+
           HomeworkMailer.submission_response( s ).deliver
         end
 

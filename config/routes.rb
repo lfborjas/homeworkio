@@ -11,6 +11,9 @@ Homeworkio::Application.routes.draw do
 
   devise_for :users, controllers: {registrations: "registrations"}
 
+  match 'db/authorize', :controller => 'dropbox', :action => 'authorize'
+  match 'db/upload', :controller => 'dropbox', :action => 'upload'
+
   root to: "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
