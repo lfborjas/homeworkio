@@ -40,7 +40,7 @@
                 <li><%= link_to "Homeworks", homeworks_path %></li>
                 
                 <% unless current_user.db_session %>
-                  <li><%= link_to "Sync Dropbox", db_authorize_path, :class=>'dropbox-sync' %></li>
+                  <li></li>
                 <%end%>
               <%end%>
             </ul>
@@ -66,25 +66,26 @@
         <%= msg %>
       </div>
     <% end %>
-
+      <%- show_dropbox_offer = !current_user.try(:uses_dropbox?) %>
       <div class="content">
         <div class="row">
-           <div class="span12">
+          <div class="span<%= show_dropbox_offer ? "9" : "12" %> ">
               <%= yield %>
             </div>
-            <%if false %>
+            <%if show_dropbox_offer %>
             <div class="span3">
               <div class="well sidebar-nav">
-                <h3>Sidebar</h3>
-                <ul class="nav nav-list">
-                  <li class="nav-header">Sidebar</li>
-                    <li><%= link_to "Link1", "/path1"  %></li>
-                    <li><%= link_to "Link2", "/path2"  %></li>
-                    <li><%= link_to "Link3", "/path3"  %></li>
-                </ul>
+                <h3>Do you have a dropbox account?</h3>
+                <p>
+                  You can opt to have your student's homeworks
+                  automagically uploaded to your dropbox when they submit them!
+
+                  <strong>Just click the button below and let the magic happen!</strong>
+                </p>
+                  <%= link_to "Sync Dropbox", db_authorize_path, :class=>'btn-large btn-primary' %>
               </div><!--/.well -->
             </div><!--/span-->
-          <%end%>
+            <%end%>
         </div><!--/row-->
       </div><!--/content-->
 
